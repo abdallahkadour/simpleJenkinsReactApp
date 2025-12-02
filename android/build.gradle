@@ -4,7 +4,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 34
         targetSdkVersion = 34
-        ndkVersion null // Matches your Docker-installed NDK
+        ndkVersion = "27.1.12297006"  // Matches your Docker-installed NDK
     }
     repositories {
         google()
@@ -25,8 +25,3 @@ allprojects {
     }
 }
 
-// Disable NDK auto-install (uses pre-installed from Docker)
-project.ext.react = [
-    enableHermes: true,
-    installNdk: false  // Key line: skips download/install
-]
