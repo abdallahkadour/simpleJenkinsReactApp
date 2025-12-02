@@ -1,6 +1,6 @@
-// android/app/build.gradle  ←  THIS IS THE CORRECT ONE FOR RN 0.82.1
+// android/app/build.gradle — THE ONE THAT ACTUALLY WORKS IN CI
 plugins {
-    id("com.facebook.react.application") version "0.82.1" // ← THIS LINE WAS MISSING THE VERSION!
+    id "com.facebook.react.application"
 }
 
 android {
@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
-    implementation("com.facebook.react:react-android")
-    implementation("com.facebook.react:hermes-android")
+    implementation "com.facebook.react:react-android"
+    implementation "com.facebook.react:hermes-android"
 }
+
+// THIS IS THE MAGIC LINE THAT FIXES THE PLUGIN IN CLEAN CI
+apply from: "../../node_modules/@react-native/gradle-plugin/settings.gradle"
