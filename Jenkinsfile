@@ -10,7 +10,7 @@ pipeline {
             steps {
                 dir('android') {
                     sh 'chmod +x ./gradlew'
-                    sh './gradlew assembleDebug --no-daemon'
+                    sh './gradlew :app:assembleDebug --no-daemon'
                 }
             }
         }
