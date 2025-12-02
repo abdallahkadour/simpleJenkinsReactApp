@@ -6,7 +6,7 @@ buildscript {
         targetSdkVersion = 34
 
         // THIS LINE IS REQUIRED — BUT WE'LL DISABLE AUTO-INSTALL BELOW
-        ndkVersion = "27.1.12297006"
+        ndkVersion = null
     }
     repositories {
         google()
