@@ -1,6 +1,6 @@
-// NEW REACT NATIVE 0.80+ STYLE — NO apply plugin lines at the top!
+// android/app/build.gradle  ←  THIS IS THE CORRECT ONE FOR RN 0.82.1
 plugins {
-    id("com.facebook.react.application")
+    id("com.facebook.react.application") version "0.82.1" // ← THIS LINE WAS MISSING THE VERSION!
 }
 
 android {
