@@ -1,7 +1,6 @@
-// android/app/build.gradle — THE ONE THAT ACTUALLY WORKS IN CI
-plugins {
-    id "com.facebook.react.application"
-}
+// Legacy style for RN 0.82.1 CI — works 100% in Jenkins
+apply plugin: "com.android.application"
+apply plugin: "com.facebook.react"
 
 android {
     namespace "com.simplejenkinsapp"
@@ -40,5 +39,4 @@ dependencies {
     implementation "com.facebook.react:hermes-android"
 }
 
-// THIS IS THE MAGIC LINE THAT FIXES THE PLUGIN IN CLEAN CI
-apply from: "../../node_modules/@react-native/gradle-plugin/settings.gradle"
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
