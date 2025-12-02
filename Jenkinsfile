@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Install') {
+            steps {
+                sh 'npm i'
+            }
+        }
+        stage('Build APK') {
+            steps {
+                dir('android') {
+                    sh 'chmod +x ./gradlew'
+                    sh './gradlew assembleDebug --no-daemon'
+                }
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'android/app/build/outputs/apk/debug/app-debug.apk', fingerprint: true
+            }
+        }
+    }
+}
