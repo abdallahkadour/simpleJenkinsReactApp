@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    ANDROID_SDK_ROOT = '/var/jenkins_home/android-sdk'
+        ANDROID_SDK_ROOT = '/opt/android-sdk'
 }
     stages {
         stage('Install') {
