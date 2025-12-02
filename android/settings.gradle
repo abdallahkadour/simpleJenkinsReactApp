@@ -1,11 +1,5 @@
-// android/settings.gradle
-
 pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
+    includeBuild("../node_modules/@react-native/gradle-plugin")
 }
 
 plugins {
@@ -16,25 +10,7 @@ extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
     ex.autolinkLibrariesFromCommand()
 }
 
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = uri("../node_modules/react-native/android") }
-        maven { url = uri("../node_modules/jsc-android/dist") }
-        maven { url = uri("https://www.jitpack.io") }
-    }
-}
-
-
 rootProject.name = "SimpleJenkinsApp"
-include ':app'
 
-// Conditionally include React Native Gradle Plugin
-def gradlePluginPath = file("../node_modules/@react-native/gradle-plugin")
-if (gradlePluginPath.exists()) {
-    includeBuild("../node_modules/@react-native/gradle-plugin")
-} else {
-    logger.warn("React Native Gradle Plugin not found at: ${gradlePluginPath.absolutePath}")
-}
+include ":app"
+includeBuild("../node_modules/@react-native/gradle-plugin")

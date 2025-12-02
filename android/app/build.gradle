@@ -1,11 +1,12 @@
-apply plugin: "com.android.application"
-apply plugin: "com.facebook.react"
+// NEW REACT NATIVE 0.80+ STYLE — NO apply plugin lines at the top!
+plugins {
+    id("com.facebook.react.application")
+}
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
+    namespace "com.simplejenkinsapp"
     compileSdk 34
 
-    namespace "com.simplejenkinsapp"
     defaultConfig {
         applicationId "com.simplejenkinsapp"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -35,8 +36,6 @@ android {
 }
 
 dependencies {
-    implementation "com.facebook.react:react-android"
-    implementation "com.facebook.react:flipper-integration"
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
 }
-
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
