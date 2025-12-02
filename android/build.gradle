@@ -4,9 +4,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 34
         targetSdkVersion = 34
-
-        // THIS LINE IS REQUIRED — BUT WE'LL DISABLE AUTO-INSTALL BELOW
-        ndkVersion = null
+        ndkVersion = "27.1.12297006"  // Matches your Docker-installed NDK
     }
     repositories {
         google()
@@ -27,10 +25,8 @@ allprojects {
     }
 }
 
-// THIS IS THE MAGIC LINE — TELLS GRADLE: "NDK IS ALREADY INSTALLED, DO NOT DOWNLOAD"
+// Disable NDK auto-install (uses pre-installed from Docker)
 project.ext.react = [
     enableHermes: true,
-    ndkVersion: "27.1.12297006",
-    // THIS STOPS THE AUTO-INSTALL
-    installNdk: false
+    installNdk: false  // Key line: skips download/install
 ]
