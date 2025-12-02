@@ -1,21 +1,36 @@
 buildscript {
     ext {
-        buildToolsVersion = "36.0.0"
-        minSdkVersion = 24
-        compileSdkVersion = 36
-        targetSdkVersion = 36
-       // ndkVersion = "27.1.12297006"
-        kotlinVersion = "2.1.20"
+        buildToolsVersion = "34.0.0"
+        minSdkVersion = 21
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+
+        // THIS LINE IS REQUIRED — BUT WE'LL DISABLE AUTO-INSTALL BELOW
+        ndkVersion = "27.1.12297006"
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        classpath("com.android.tools.build:gradle:8.3.0")
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
     }
 }
 
-apply plugin: "com.facebook.react.rootproject"
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "$rootDir/../node_modules/react-native/android" }
+        maven { url "$rootDir/../node_modules/jsc-android/dist" }
+    }
+}
+
+// THIS IS THE MAGIC LINE — TELLS GRADLE: "NDK IS ALREADY INSTALLED, DO NOT DOWNLOAD"
+project.ext.react = [
+    enableHermes: true,
+    ndkVersion: "27.1.12297006",
+    // THIS STOPS THE AUTO-INSTALL
+    installNdk: false
+]
