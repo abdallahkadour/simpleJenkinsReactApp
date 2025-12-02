@@ -73,11 +73,16 @@ def enableProguardInReleaseBuilds = false
 def jscFlavor = 'io.github.react-native-community:jsc-android:2026004.+'
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
+    ndkVersion null
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.officialjenkinsapp"
+    sourceSets {
+        main {
+            jni.srcDirs = []
+        }
+    }
     defaultConfig {
         applicationId "com.officialjenkinsapp"
         minSdkVersion rootProject.ext.minSdkVersion

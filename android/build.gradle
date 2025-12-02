@@ -4,7 +4,7 @@ buildscript {
         minSdkVersion = 21
         compileSdkVersion = 34
         targetSdkVersion = 34
-        ndkVersion = "27.1.12297006"  // Matches your Docker-installed NDK
+        ndkVersion null // Matches your Docker-installed NDK
     }
     repositories {
         google()
